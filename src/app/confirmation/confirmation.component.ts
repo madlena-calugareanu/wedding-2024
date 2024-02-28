@@ -24,7 +24,8 @@ export class ConfirmationComponent {
   allergies = null;
   showMandatoryFields = false;
   formSent: boolean = false;
-
+  detailsAllergies = null;
+  moreDrinks = null;
   drinkCheckOptions = [
     {
       label: 'Vin',
@@ -35,7 +36,10 @@ export class ConfirmationComponent {
     { label: 'Bere', value: 'bere' },
     { label: 'Sampanie', value: 'sampanie' },
     { label: 'Gin', value: 'gin' },
+    { label: 'Altceva', value: 'altceva' },
   ];
+
+  altcevaActive = false;
 
   constructor(private invitationDataService: InvitationDataService) {}
 
@@ -47,6 +51,14 @@ export class ConfirmationComponent {
 
   newId() {
     return (Math.random() * Date.now() * 10000).toString();
+  }
+
+  drinkChecked(drink: any) {
+    let altceva = drink.filter((el: any) => el.label === 'Altceva');
+
+    if (altceva[0].checked === true) {
+      this.altcevaActive = true;
+    }
   }
 
   sendConfirmation() {
@@ -63,8 +75,9 @@ export class ConfirmationComponent {
       drinks: drinkOptions,
       accomodation: this.accomodation,
       allergies: this.allergies,
+      detailsAllergies: this.detailsAllergies,
+      detailsDrinks: this.moreDrinks,
     };
-    console.log('🚀 ~ confirmationForm:', confirmationForm);
 
     if (
       (this.name === null ||
@@ -74,6 +87,8 @@ export class ConfirmationComponent {
         this.allergies === null) &&
       this.presence !== 'niciuna'
     ) {
+      this.showMandatoryFields = true;
+    } else if (this.name === null && this.presence == 'niciuna') {
       this.showMandatoryFields = true;
     } else {
       this.invitationDataService.postInvitationForm(confirmationForm);

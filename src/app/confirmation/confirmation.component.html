@@ -14,19 +14,29 @@
   <nz-divider></nz-divider>
 
   <div style="padding: 0 30px; z-index: 15; width: 100%">
-    <h3 class="text">Scrieti numele si prenumele</h3>
+    <h3
+      class="text"
+      [ngClass]="name === null && showMandatoryFields ? 'emptyField' : ''"
+    >
+      Scrieti numele si prenumele
+    </h3>
     <input
       nz-input
       placeholder="Nume prenume"
       [(ngModel)]="name"
       class="input"
       type="text"
+      [ngClass]="name === null && showMandatoryFields ? 'emptyInput' : ''"
     />
   </div>
 
   <nz-divider></nz-divider>
 
-  <h3 class="text" style="padding: 0 30px">
+  <h3
+    class="text"
+    style="padding: 0 30px"
+    [ngClass]="presence === null && showMandatoryFields ? 'emptyField' : ''"
+  >
     Veti putea fi prezent la evenimentul nostru?
   </h3>
 
@@ -47,17 +57,26 @@
   <nz-divider></nz-divider>
 
   <div *ngIf="presence !== 'niciuna'" style="padding: 0 30px">
-    <h3 class="text">Cu cine veniti?</h3>
+    <h3
+      class="text"
+      [ngClass]="plusOne === null && showMandatoryFields ? 'emptyField' : ''"
+    >
+      Cu cine veniti?
+    </h3>
     <input
       nz-input
       class="input"
       placeholder="Numele persoanei/lor cu care veniti"
       [(ngModel)]="plusOne"
       type="text"
+      [ngClass]="plusOne === null && showMandatoryFields ? 'emptyInput' : ''"
     />
     <nz-divider></nz-divider>
 
-    <h3 class="text">
+    <h3
+      class="text"
+      [ngClass]="allergies === null && showMandatoryFields ? 'emptyField' : ''"
+    >
       Aveti alergii sau restrictii alimentare pe care ar trebui sa le luam in
       calcul?
     </h3>
@@ -65,16 +84,48 @@
       <label class="text" nz-radio [nzValue]="true">Da</label>
       <label class="text" nz-radio [nzValue]="false">Nu</label>
     </nz-radio-group>
+    <input
+      *ngIf="allergies === true"
+      [ngClass]="
+        allergies === true && detailsAllergies === null && showMandatoryFields
+          ? 'emptyInput'
+          : ''
+      "
+      nz-input
+      class="input"
+      placeholder="Sunt alergic/a la..."
+      [(ngModel)]="detailsAllergies"
+      type="text"
+      style="margin-top: 10px"
+    />
     <nz-divider></nz-divider>
 
     <h3 class="text">Ce v-ar placea sa serviti?</h3>
     <div class="drinks">
-      <nz-checkbox-group [(ngModel)]="drinkCheckOptions"></nz-checkbox-group>
+      <nz-checkbox-group
+        [(ngModel)]="drinkCheckOptions"
+        (ngModelChange)="drinkChecked($event)"
+      ></nz-checkbox-group>
     </div>
-
+    <input
+      *ngIf="altcevaActive"
+      nz-input
+      class="input"
+      placeholder="As vrea sa beau..."
+      [(ngModel)]="moreDrinks"
+      type="text"
+      style="margin-top: 30px"
+    />
     <nz-divider></nz-divider>
 
-    <h3 class="text">Veti avea nevoie de cazare?</h3>
+    <h3
+      class="text"
+      [ngClass]="
+        accomodation === null && showMandatoryFields ? 'emptyField' : ''
+      "
+    >
+      Veti avea nevoie de cazare?
+    </h3>
     <nz-radio-group [(ngModel)]="accomodation" class="row">
       <label class="text" nz-radio [nzValue]="true">Da</label>
       <label class="text" nz-radio [nzValue]="false">Nu</label>
