@@ -9,6 +9,6 @@ import { Router } from '@angular/router';
 export class DetailsComponent {
   constructor(private router: Router) {}
   goTo(link: string) {
-    this.router.navigate([link]);
+    window.open(link, '_blank');
   }
 }

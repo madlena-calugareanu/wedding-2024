@@ -1,12 +1,14 @@
 .general-wrapper {
   width: 100%;
-  height: auto;
+  height: calc(100% + 250px);
+
   padding: 30px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
+  z-index: 20;
 }
 
 .general-wrapper::before {
@@ -23,6 +25,7 @@
   opacity: 0.4; /* Adjust the opacity as needed */
   // transform: scale(1.5);
   overflow: hidden;
+  z-index: 10;
 }
 
 .text {
@@ -55,6 +58,7 @@
 app-list-element {
   width: 100%;
   margin-bottom: 15px;
+  z-index: 30;
 }
 
 .input {
@@ -67,10 +71,12 @@ app-list-element {
   background-color: #4d64532d;
   color: #222c24;
   border-radius: 10px;
+  z-index: 30;
 }
 
 .input::placeholder {
   color: #364439;
+  z-index: 30;
 }
 
 .confirm-btn {
@@ -82,6 +88,7 @@ app-list-element {
   background-color: #4d64532d;
   color: #4d6453;
   font-size: 16px;
+  z-index: 30;
 }
 
 .back-btn {
@@ -93,6 +100,7 @@ app-list-element {
   background-color: #4d645300;
   color: #4d6453;
   font-size: 16px;
+  z-index: 30;
 }
 
 .btn-wrapper {
