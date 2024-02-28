@@ -1,0 +1,65 @@
+<div class="general-wrapper">
+  <h2 class="cursive">Wishlist</h2>
+  <p
+    class="text"
+    style="text-align: center"
+    *ngIf="!isSelected && !wishlistElementSent"
+  >
+    Aici gasiti cateva lucruri pe care le-am considera utile.
+  </p>
+
+  <!-- <p
+    class="text"
+    style="text-align: center"
+    *ngIf="!isSelected && !wishlistElementSent"
+  >
+    Scrieti-va numele in spatiul de completare si dati click pe
+    <span>salveaza</span>. Dupa ce veti salva, nu veti mai avea sansa sa editati
+    alegerea.
+  </p> -->
+
+  <p
+    class="text"
+    style="text-align: center"
+    *ngIf="isSelected && !wishlistElementSent"
+  >
+    Dupa ce vei apasa butonul trimite, nu vor mai putea fi facute modificari
+    asupra alegerii, decat daca ne contactezi pe noi.
+  </p>
+
+  <p
+    class="text"
+    style="text-align: center"
+    *ngIf="!isSelected && wishlistElementSent"
+  >
+    O alegere minunata! Va multumim pentru implicare!
+  </p>
+  <nz-divider></nz-divider>
+
+  <p class="text" *ngIf="isSelected && !wishlistElementSent">Ai ales</p>
+
+  <div class="list-el-wrapper" *ngFor="let element of wishlistElements">
+    <app-list-element
+      [isSelected]="isSelected"
+      [element]="element"
+      (sendSelection)="confirmSelection($event)"
+    ></app-list-element>
+  </div>
+
+  <div *ngIf="isSelected && !wishlistElementSent" class="select-wrapper">
+    <p class="text">Daca vrei sa iti vedem numele...</p>
+    <input
+      nz-input
+      class="input"
+      placeholder="Nume"
+      [(ngModel)]="numeSelectat"
+      type="text"
+      style="margin-top: 10px"
+    />
+    <p class="text" style="margin-top: 20px">Daca nu, doar trimite selectia</p>
+    <div class="btn-wrapper">
+      <button class="back-btn" (click)="goBack()">Inapoi</button>
+      <button class="confirm-btn" (click)="sendElement()">Trimite</button>
+    </div>
+  </div>
+</div>

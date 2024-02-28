@@ -1,0 +1,30 @@
+<div class="wrapper" [ngClass]="expanded ? 'expandedWrapper' : ''">
+  <div class="title-wrapper" (click)="expand()">
+    <h3>
+      {{ element.object }}
+      <span *ngIf="element.chosen"
+        ><span nz-icon nzType="lock" nzTheme="outline"></span
+      ></span>
+    </h3>
+    <span
+      nz-icon
+      nzType="right"
+      nzTheme="outline"
+      class="icon"
+      [@rotateIcon]="isRotated.toString()"
+    ></span>
+    <!-- <span nz-icon nzType="down" nzTheme="outline"></span> -->
+  </div>
+  <div class="link-wrapper" *ngIf="expanded">
+    <a class="link" target="”_blank”" [href]="element.link1">Link 1</a>
+    <a class="link" target="”_blank”" [href]="element.link2">Link 2</a>
+    <a class="link" target="”_blank”" [href]="element.link3">Link 3</a>
+  </div>
+  <button
+    class="confirm-btn"
+    *ngIf="expanded && !isSelected && !element.chosen"
+    (click)="selectElement()"
+  >
+    Selecteaza
+  </button>
+</div>

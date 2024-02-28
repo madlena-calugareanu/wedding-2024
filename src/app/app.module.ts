@@ -21,12 +21,15 @@ import { CountdownComponent } from './countdown/countdown.component';
 import { DetailsComponent } from './details/details.component';
 import { DressCodeComponent } from './dress-code/dress-code.component';
 import './firebase-config'; // Import firebase-config.ts file
+import { GeneralComponent } from './general/general.component';
 import { HomeComponent } from './home/home.component';
 import { InvitationComponent } from './invitation/invitation.component';
 import { PolaroidComponent } from './invitation/polaroid/polaroid.component';
 import { LocationComponent } from './location/location.component';
 import { ThanksComponent } from './thanks/thanks.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { ListElementComponent } from './wishlist/list-element/list-element.component';
+import { WishlistComponent } from './wishlist/wishlist.component';
 
 registerLocaleData(en);
 
@@ -44,6 +47,9 @@ registerLocaleData(en);
     PolaroidComponent,
     DetailsComponent,
     CountdownComponent,
+    WishlistComponent,
+    GeneralComponent,
+    ListElementComponent,
   ],
   imports: [
     BrowserModule,

@@ -45,12 +45,8 @@ export class ConfirmationComponent {
 
   ngOnInit() {}
 
-  log(value: object[]): void {
-    console.log(value);
-  }
-
   newId() {
-    return (Math.random() * Date.now() * 10000).toString();
+    return Math.floor(Math.random() * Date.now() * 10000).toString();
   }
 
   drinkChecked(drink: any) {
