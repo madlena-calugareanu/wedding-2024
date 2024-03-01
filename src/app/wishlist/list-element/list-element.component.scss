@@ -21,7 +21,13 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
+}
+
+.link {
+  flex-basis: calc(33.33% - 10px); /* Adjust width for three items per row */
+  margin: 5px; /* Add margin between items */
 }
 
 .title-wrapper {

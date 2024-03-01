@@ -1,10 +1,47 @@
-<div>
-  <app-home></app-home>
-  <app-invitation></app-invitation>
-  <app-location></app-location>
-  <app-timeline></app-timeline>
-  <app-details></app-details>
-  <app-dress-code></app-dress-code>
+<div style="position: relative">
+  <app-home #home id="home"></app-home>
+  <app-invitation #invitation id="invitation"></app-invitation>
+  <app-location #location id="location"></app-location>
+  <app-timeline #timeline id="timeline"></app-timeline>
+  <app-details #details id="details"></app-details>
+  <app-dress-code #dressCode id="dressCode"></app-dress-code>
   <app-countdown></app-countdown>
-  <app-confirmation></app-confirmation>
+  <app-confirmation #confirmation id="confirmation"></app-confirmation>
+  <app-contact #contact id="contact"></app-contact>
+  <app-thanks></app-thanks>
+
+  <button
+    nz-button
+    nzType="default"
+    nzShape="circle"
+    class="menu"
+    (click)="toggleMenu()"
+    *ngIf="menuVisible"
+  >
+    <span nz-icon nzType="menu" nzTheme="outline"></span>
+  </button>
+
+  <div class="blur-wrapper" *ngIf="!menuVisible">
+    <div class="menu-wrapper">
+      <div class="element-wrapper">
+        <a (click)="scrollToElement('home')" class="text">Acasa</a>
+        <a (click)="scrollToElement('invitation')" class="text">Invitatie</a>
+        <a (click)="scrollToElement('location')" class="text">Locatie</a>
+        <a (click)="scrollToElement('timeline')" class="text">Cronologie</a>
+        <a (click)="scrollToElement('details')" class="text">Detalii</a>
+        <a (click)="scrollToElement('dressCode')" class="text">Dress code</a>
+        <a (click)="scrollToElement('confirmation')" class="text">Formular</a>
+        <a (click)="scrollToElement('contact')" class="text">Contact</a>
+        <nz-divider></nz-divider>
+
+        <a href="/wishlist" target="_blank" class="text">Lista de cadouri</a>
+      </div>
+      <span
+        nz-icon
+        nzType="close"
+        nzTheme="outline"
+        (click)="toggleMenu()"
+      ></span>
+    </div>
+  </div>
 </div>

@@ -16,9 +16,11 @@
     <!-- <span nz-icon nzType="down" nzTheme="outline"></span> -->
   </div>
   <div class="link-wrapper" *ngIf="expanded">
-    <a class="link" target="”_blank”" [href]="element.link1">Link 1</a>
-    <a class="link" target="”_blank”" [href]="element.link2">Link 2</a>
-    <a class="link" target="”_blank”" [href]="element.link3">Link 3</a>
+    <div *ngFor="let item of element.links; let index = index">
+      <a class="link" target="”_blank”" [href]="item"
+        >Inspiratie {{ index + 1 }}</a
+      >
+    </div>
   </div>
   <button
     class="confirm-btn"
